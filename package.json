@@ -21,7 +21,7 @@
   },
   "scripts": {
     "dev": "APP_ENV=DEVELOPMENT npm run server & npm run client",
-    "server": "ts-node-dev server/index.ts",
+    "server": "APP_ENV=DEVELOPMENT ts-node-dev server/index.ts",
     "client": "PORT=3000 react-scripts start",
     "build": "APP_ENV=PRODUCTION react-scripts build",
     "test": "echo No avalaible tests"

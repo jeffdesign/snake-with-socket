@@ -50,43 +50,21 @@ export enum State {
   Disconnected = 'Disconnected',
 }
 
-// Model
-export type Model = Loading | Init | Select | WaitingRoom | Playing | Error
+export type Model = Game[]
 
-// Todo: In a multiplayer mode, the model probably needs needs support multiprocessing like this..
-// export type Model = Room[]
-// type Room = Loading | Init | Select | WaitingRoom | Playing | Error
-// But then, the gameloop sort of always needs to run.
-// Either that, or we need to spin up new server instances for each unique room with the current model
-
-export interface Game {
+export type Game = {
+  roomId: string
+  state: Loading | Init | Select | WaitingRoom | Playing | Error
   players: Player[]
   fruit: Fruit
 }
 
-export interface Loading extends Game {
-  state: State.Loading
-}
-
-export interface Init extends Game {
-  state: State.Init
-}
-
-export interface Playing extends Game {
-  state: State.Playing
-}
-
-export interface Select extends Game {
-  state: State.Select
-}
-
-export interface WaitingRoom extends Game {
-  state: State.WaitingRoom
-}
-
-export interface Error extends Game {
-  state: State.Error
-}
+type Loading = State.Loading
+type Init = State.Init
+type Playing = State.Playing
+type Select = State.Select
+type WaitingRoom = State.WaitingRoom
+type Error = State.Error
 
 export interface Input {
   color: Color
@@ -135,6 +113,7 @@ export interface Fruit {
 export interface Player {
   id: string
   roomId: string
+  ready: boolean
   name: string
   color: Color
   size: number

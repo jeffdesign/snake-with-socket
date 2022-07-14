@@ -1,7 +1,7 @@
-import Leaderboard from './Leaderboard'
 import { Player, Settings } from 'shared-types'
 import { useParams } from 'react-router-dom'
 import { useState } from 'react'
+import ReadyBoard from './ReadyBoard'
 
 interface Props {
   socketId: string
@@ -37,7 +37,7 @@ function WaitingRoom({ socketId, settings, players, ready }: Props) {
   return (
     <div className="Ui-wrapper" style={{ height: `${settings.canvasSize}px` }}>
       <div className="Sidebar-wrapper">
-        <Leaderboard players={players} socketId={socketId} />
+        <ReadyBoard players={players} socketId={socketId} />
       </div>
       <div className="Sidebar-wrapper">
         <button onClick={() => ready(socketId, currentRoomId)}>Ready</button>

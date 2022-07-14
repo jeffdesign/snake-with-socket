@@ -116,6 +116,7 @@ function App() {
   return (
     <div className="App">
       {settings && <Logo settings={settings} color={input.color} />}
+      <pre>{socketId}</pre>
       {socketStatus === State.Loading || socketStatus === State.Init ? (
         <div>Loading...</div>
       ) : socketStatus === State.Disconnected ? (
